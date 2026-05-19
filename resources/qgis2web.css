@@ -151,7 +151,14 @@ td video {
     position: absolute;
     right: 0;
     top: 0;
-    display: contents;
+    display: block; /* evitar que se oculte el control al usar display: contents */
+    z-index: 1000;  /* asegurar que quede encima del mapa */
+    pointer-events: none; /* permitir que sólo los controles hijos manejen eventos */
+}
+
+#top-right-container .ol-control,
+#top-right-container .layer-switcher {
+    pointer-events: auto; /* reactivar interacción para los controles dentro del contenedor */
 }
 #bottom-right-container {
     position: absolute;
